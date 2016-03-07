@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
 using System.Linq;
 using TheWorld.Models;
 using TheWorld.Services;
@@ -17,6 +18,12 @@ namespace TheWorld.Controllers.Web
 			_repository = repository;
 		}
 		public IActionResult Index()
+		{
+			return View();
+		}
+
+		[Authorize]
+		public IActionResult Trips()
 		{
 			var trips = _repository.GetAllTrips();
 
