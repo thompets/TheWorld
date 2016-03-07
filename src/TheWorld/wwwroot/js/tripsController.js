@@ -20,9 +20,9 @@
 			.then(function (response) {
 				// Success
 				angular.copy(response.data, vm.trips);
-			}, function (error) {
+			}, function (err) {
 				// Failure
-				vm.errorMessage = "Failed to load data: " + error;
+				vm.errorMessage = "Failed to load data: " + err;
 			})
 			.finally(function () {
 				vm.isBusy = false;
@@ -37,9 +37,9 @@
 					// success
 					vm.trips.push(response.data);
 					vm.newTrip = {};
-				}, function () {
+				}, function (err) {
 					// failure
-					vm.errorMessage = "Failed to save new trip";
+					vm.errorMessage = "Failed to save new trip: " + err;
 				})
 				.finally(function () {
 					vm.isBusy = false;
